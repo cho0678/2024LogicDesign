@@ -1,8 +1,0 @@
-MO ControlUnit NULL ControlUnit.v vlg71/_control_unit.bin 1717496214
-MO Hex_to_7seg NULL Hex_to_7segment.v vlg00/_hex__to__7seg.bin 1717496214
-MO RegisterFile NULL RegisterFile.v vlg69/_register_file.bin 1717496214
-MO InstructionMemory NULL InstructionMemory.v vlg63/_instruction_memory.bin 1717474684
-MO DataMemory NULL DataMemory.v vlg2B/_data_memory.bin 1717496214
-MO Microprocessor NULL Microprocessor.v vlg22/_microprocessor.bin 1717496214
-MO ALU NULL ALU.v vlg2A/_a_l_u.bin 1717496214
-MO ProgramCounter NULL ProgramCounter.v vlg78/_program_counter.bin 1717496214
