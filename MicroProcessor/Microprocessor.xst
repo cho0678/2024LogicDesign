@@ -1,5 +1,0 @@
-set -tmpdir "/home/chosu/Documents/Xilinx/MicroProcessor/xst/projnav.tmp"
-set -xsthdpdir "/home/chosu/Documents/Xilinx/MicroProcessor/xst"
-elaborate
--ifn Microprocessor.prj
--ifmt mixed
