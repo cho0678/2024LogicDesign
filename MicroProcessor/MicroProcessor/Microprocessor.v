@@ -19,22 +19,29 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module Microprocessor(
-    input clk,
+    input oscillator,
     input reset,
-	 input [7:0] instruction,
-    output [6:0] seg,
-	 output [7:0] Read_Address
-    );
+    input [7:0] instruction,
+    output [6:0] seg1,
+    output [6:0] seg2,
+    output [7:0] PC
+);
 
-    wire [7:0] PC;
+    wire clk;
     wire [7:0] nextPC;
     wire [1:0] rs, rt, rd;
     wire [7:0] rsData, rtData, writeData, ALUResult;
     wire [1:0] ALUControl;
     wire RegWrite, MemRead, MemWrite, Branch;
-	 
-	 assign Read_Address = PC;
 
+    // Frequency Divider
+    FrequencyDivider clock(
+        .clkout(clk),
+        .clr(reset),
+        .clk(oscillator)
+    );
+
+    // Program Counter
     ProgramCounter pc(
         .clk(clk),
         .reset(reset),
@@ -42,11 +49,12 @@ module Microprocessor(
         .PC(PC)
     );
 
-
+    // Instruction fields
     assign rs = instruction[5:4];
     assign rt = instruction[3:2];
     assign rd = instruction[1:0];
 
+    // Register File
     RegisterFile rf(
         .rs(rs),
         .rt(rt),
@@ -58,12 +66,14 @@ module Microprocessor(
         .rtData(rtData)
     );
 
+    // ALU
     ALU alu(
         .A(rsData),
         .B(rtData),
         .Y(ALUResult)
     );
 
+    // Control Unit
     ControlUnit cu(
         .op(instruction[7:6]),
         .ALUControl(ALUControl),
@@ -73,21 +83,28 @@ module Microprocessor(
         .Branch(Branch)
     );
 
+    // Data Memory
     DataMemory dm(
         .clk(clk),
         .address(ALUResult),
-        .writeData(rsData),
+        .writeData(rtData),  //  rtData? rsData? 
         .MemWrite(MemWrite),
         .MemRead(MemRead),
         .readData(writeData)
     );
 
+    // PC Update logic
     assign nextPC = Branch ? PC + {{6{instruction[5]}}, instruction[5:0]} : PC + 1;
-	 
-	 //need modification. need another 7seg display 
-    Hex_to_7seg display(
+
+    // 7-segment display for writeData
+    Hex_to_7seg display1(
+        .hex(writeData[7:4]),
+        .seg(seg1)
+    );
+    
+    Hex_to_7seg display2(
         .hex(writeData[3:0]),
-        .seg(seg)
+        .seg(seg2)
     );
 
 endmodule
