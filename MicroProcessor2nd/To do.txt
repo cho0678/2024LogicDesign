@@ -1,0 +1,21 @@
+To do
+
+-module coding 
+-module testbench
+Completed
+	DataMemory
+	frequency divider
+	hexto7seg
+	alu
+	
+registerfile
+controlUnit
+
+	
+	
+
+
+
+-Instruction coding
+-FPGA test
+

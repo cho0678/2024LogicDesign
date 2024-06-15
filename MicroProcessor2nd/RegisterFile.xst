@@ -1,0 +1,5 @@
+set -tmpdir "/csehome/cho0678/MicroProcessor/xst/projnav.tmp"
+set -xsthdpdir "/csehome/cho0678/MicroProcessor/xst"
+elaborate
+-ifn RegisterFile.prj
+-ifmt mixed
