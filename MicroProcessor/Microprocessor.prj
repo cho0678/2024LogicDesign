@@ -1,0 +1,8 @@
+verilog work "RegisterFile.v"
+verilog work "ProgramCounter.v"
+verilog work "Hex_to_7segment.v"
+verilog work "FrequencyDivider.v"
+verilog work "DataMemory.v"
+verilog work "ControlUnit.v"
+verilog work "ALU.v"
+verilog work "Microprocessor.v"

@@ -1,0 +1,15 @@
+To do
+
+-module coding
+-module testbench
+Completed
+	DataMemory
+	
+
+
+
+-combining modules
+
+-Instruction coding
+-FPGA test
+
